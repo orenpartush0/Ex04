@@ -5,17 +5,16 @@ namespace Ex04.Menus.Delegates
 {
     public class LeafItem : IMenuItem
     {
-        public string Title { get; }
         public event Action ItemClicked;
+        public string Title { get; }
+        public bool ReUseAfterSelection { get; } = true;
 
         public LeafItem(string i_Title) => Title = i_Title;
-        private bool OnClick() 
+        private void OnClick() 
         {
             ItemClicked?.Invoke();
             Thread.Sleep(2000);
-
-            return true;
         }
-        public bool HandleSelection() => OnClick(); 
+        public void HandleSelection() => OnClick(); 
     }
 }

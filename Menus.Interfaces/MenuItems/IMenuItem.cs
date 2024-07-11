@@ -4,6 +4,6 @@
     {
         string Title { get; }
         bool ReUseAfterSelection { get; }
-        bool HandleSelection();
+        void HandleSelection();
     }
 }

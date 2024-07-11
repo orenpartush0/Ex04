@@ -7,11 +7,12 @@ namespace Ex04.Menus.Delegates
     public class MenuItem : IMenuItem
     {
         private const int k_MinChoice = 0;
+        public bool ReUseAfterSelection { get; } = false;
         private List<IMenuItem> MenuItems { get; } = new List<IMenuItem>();
         public string Title { get; }
         public MenuItem(string i_ItemTitle) => Title = i_ItemTitle;
 
-        private bool showMenu()
+        private void showMenu()
         {
             try
             {
@@ -35,15 +36,14 @@ namespace Ex04.Menus.Delegates
                 Console.ReadKey();
                 showMenu();
             }
-
-            return false;
         }
 
         private void menuExecute()
         {
             int menuChoice = getMenuChoiceInRange();
 
-            if (MenuItems[menuChoice] != null && MenuItems[menuChoice].HandleSelection())
+            MenuItems[menuChoice]?.HandleSelection();
+            if (MenuItems[menuChoice] != null && MenuItems[menuChoice].ReUseAfterSelection)
             {
                 showMenu();
             }
@@ -54,7 +54,7 @@ namespace Ex04.Menus.Delegates
         private void printBackOrExitByType() => Console.WriteLine($"0 --> {getBackOrExitMessage()}");
         private void showOptionOfBackOrExit() => Console.WriteLine($"0 --> {getBackOrExitMessage()}");
         public void AddItemToMenu(IMenuItem i_MenuItem) => MenuItems.Add(i_MenuItem);
-        public bool HandleSelection() => showMenu();
+        public void HandleSelection() => showMenu();
 
         private int getMenuChoiceInRange()
         {

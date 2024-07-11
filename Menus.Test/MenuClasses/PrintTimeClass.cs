@@ -9,7 +9,7 @@ namespace Ex04.Menus.Test
         {
             DateTime today = DateTime.Now;
 
-            Console.WriteLine("The hour is: {0}", today.ToShortTimeString());
+            Console.WriteLine("The time is: {0}", today.ToShortTimeString());
         }
 
         public void Execute() => PrintTime();

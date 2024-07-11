@@ -7,12 +7,13 @@ namespace Ex04.Menus.Interfaces
     public class MenuItem : IMenuItem
     {
         private const int k_MinChoice = 0;
-        public bool ReUseAfterSelection { get; } = false;
-        private List<IMenuItem> MenuItems { get; } = new List<IMenuItem>();
         public string Title { get; }
+        private List<IMenuItem> MenuItems { get; } = new List<IMenuItem>();
+        public bool ReUseAfterSelection { get; } = false;
         public MenuItem(string i_ItemTitle) => Title = i_ItemTitle;
+        public void HandleSelection() => showMenu();
 
-        private bool showMenu()
+        private void showMenu()
         {
             try
             {
@@ -36,15 +37,14 @@ namespace Ex04.Menus.Interfaces
                 Console.ReadKey();
                 showMenu();
             }
-
-            return ReUseAfterSelection;
         }
 
         private void menuExecute()
         {
             int menuChoice = getMenuChoiceInRange();
 
-            if (MenuItems[menuChoice] != null && MenuItems[menuChoice].HandleSelection())
+            MenuItems[menuChoice]?.HandleSelection();
+            if (MenuItems[menuChoice] != null && MenuItems[menuChoice].ReUseAfterSelection)
             {
                 showMenu();
             }
@@ -55,7 +55,6 @@ namespace Ex04.Menus.Interfaces
         private void printBackOrExitByType() => Console.WriteLine($"0 --> {getBackOrExitMessage()}");
         private void showOptionOfBackOrExit() => Console.WriteLine($"0 --> {getBackOrExitMessage()}");
         public void AddItemToMenu(IMenuItem i_MenuItem) => MenuItems.Add(i_MenuItem);
-        public bool HandleSelection() => showMenu();
 
         private int getMenuChoiceInRange()
         {

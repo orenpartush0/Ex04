@@ -10,9 +10,7 @@ namespace Ex04.Menus.Test
         {
             Console.WriteLine("Please enter a string:");
             string userInput = Console.ReadLine() ?? string.Empty;
-
-            int numOfCaptials = userInput.Count(ch => !char.IsLower(ch));
-
+            int numOfCaptials = userInput.Count(ch => char.IsUpper(ch));
             Console.WriteLine($"The number of capitals found in the string is {numOfCaptials}");
         }
 
