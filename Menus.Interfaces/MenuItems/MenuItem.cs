@@ -52,7 +52,6 @@ namespace Ex04.Menus.Interfaces
 
         private void printBackOrExitInInstructionsByType() => Console.WriteLine($"Enter your request: (1 to {MenuItems.Count - 1} or press '0' to {getBackOrExitMessage()})");
         private string getBackOrExitMessage() => MenuItems[0] == null ? "Exit" : "Back";
-        private void printBackOrExitByType() => Console.WriteLine($"0 --> {getBackOrExitMessage()}");
         private void showOptionOfBackOrExit() => Console.WriteLine($"0 --> {getBackOrExitMessage()}");
         public void AddItemToMenu(IMenuItem i_MenuItem) => MenuItems.Add(i_MenuItem);
 
