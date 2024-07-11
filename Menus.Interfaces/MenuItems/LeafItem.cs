@@ -5,6 +5,8 @@ namespace Ex04.Menus.Interfaces
     public class LeafItem : IMenuItem
     {
         private IExecutable Executable { get; set; }
+        public bool ReUseAfterSelection { get; } = true;
+
         public string Title { get; }
 
         public LeafItem(string i_Title, IExecutable i_Executable)
@@ -18,7 +20,7 @@ namespace Ex04.Menus.Interfaces
             Executable.Execute();
             Thread.Sleep(2000);
 
-            return true;
+            return ReUseAfterSelection;
         }
     }
 }

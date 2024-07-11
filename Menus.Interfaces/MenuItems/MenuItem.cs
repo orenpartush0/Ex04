@@ -7,10 +7,10 @@ namespace Ex04.Menus.Interfaces
     public class MenuItem : IMenuItem
     {
         private const int k_MinChoice = 0;
+        public bool ReUseAfterSelection { get; } = false;
         private List<IMenuItem> MenuItems { get; } = new List<IMenuItem>();
         public string Title { get; }
         public MenuItem(string i_ItemTitle) => Title = i_ItemTitle;
-        public int Count() => MenuItems.Count;
 
         private bool showMenu()
         {
@@ -37,7 +37,7 @@ namespace Ex04.Menus.Interfaces
                 showMenu();
             }
 
-            return false;
+            return ReUseAfterSelection;
         }
 
         private void menuExecute()

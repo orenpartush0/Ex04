@@ -3,6 +3,7 @@
     public interface IMenuItem
     {
         string Title { get; }
+        bool ReUseAfterSelection { get; }
         bool HandleSelection();
     }
 }

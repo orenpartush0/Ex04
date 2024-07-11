@@ -10,7 +10,6 @@ namespace Ex04.Menus.Delegates
         private List<IMenuItem> MenuItems { get; } = new List<IMenuItem>();
         public string Title { get; }
         public MenuItem(string i_ItemTitle) => Title = i_ItemTitle;
-        public int Count() => MenuItems.Count;
 
         private bool showMenu()
         {
