@@ -10,8 +10,6 @@ namespace Ex04.Menus.Test
             Delegates.MainMenu mainMenudDelegates = getDelegatesMainMenu();
             mainMenudDelegates.RunMenu();
 
-            Console.Clear();
-
             Interfaces.MainMenu mainMenuInterface = getInterfacessMainMenu();
             mainMenuInterface.RunMenu();
         }
